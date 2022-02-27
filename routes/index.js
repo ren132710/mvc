@@ -1,5 +1,5 @@
 const express = require('express')
-//import the Router() method from express
+//we need the Router() method from express
 const router = express.Router()
 
 router.get('/', (req, res) => {
