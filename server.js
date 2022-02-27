@@ -8,6 +8,10 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const indexRouter = require('./routes/index')
 
+/*
+Setup views and layouts
+*/
+
 //set the view engine to ejs
 app.set('view engine', 'ejs')
 //location of views
@@ -19,13 +23,13 @@ app.use(expressLayouts)
 //location of public files
 app.use(express.static('public'))
 
-//set the mongoose db connection
+/*
+connect to mongoose
+*/
 const mongoose = require('mongoose')
 
-//fetch the env variable, don't hardcode
-//TODO: may not need the optional param
+//fetch the url from .env
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
-// mongoose.connect(process.env.DATABASE_URL)
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))
